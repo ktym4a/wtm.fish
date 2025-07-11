@@ -1,7 +1,7 @@
 # Completions for wtm - Git worktree manager
 
 # Disable file completions for wtm
-complete -c wtmm -f
+complete -c wtm -f
 
 # Global options
 complete -c wtm -s h -l help -d "Show help message"
@@ -42,7 +42,7 @@ complete -c wtm -n "__fish_seen_subcommand_from clean" -s h -l help -d "Show hel
 function __wtm_git_worktree_branches --description "Get worktree branches for completion"
     # Get current branch to exclude it
     set -l current_branch (git branch --show-current 2>/dev/null)
-    
+
     # Get all worktree branches
     git worktree list 2>/dev/null | while read -l line
         set -l branch (echo $line | string match -r '\[([^\]]+)\]' | string split -f2 '[' | string trim -c ']')
